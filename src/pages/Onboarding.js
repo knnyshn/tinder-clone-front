@@ -2,7 +2,7 @@ import Nav from "../components/Nav";
 import { useState } from "react";
 import { useCookies } from "react-cookie";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
+import { instance } from "../axios";
 
 function Onboarding() {
   const [cookies, setCookie, removeCookie] = useCookies(null);
@@ -26,7 +26,7 @@ function Onboarding() {
     console.log("submitted");
     e.preventDefault();
     try {
-      const response = await axios.put("http://localhost:8000/user", {
+      const response = await instance.put("/user", {
         formData,
       });
       const success = response.status === 200;

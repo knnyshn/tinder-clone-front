@@ -1,7 +1,8 @@
 import { useState } from "react";
-import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useCookies } from 'react-cookie'
+import { instance } from "../axios";
+
 
 function Authmodal({ setShowModal, isSignUp }) {
     const [email, setEmail] = useState(null)
@@ -26,7 +27,7 @@ function Authmodal({ setShowModal, isSignUp }) {
                 return
             }
 
-            const response = await axios.post(`http://localhost:8000/${isSignUp ? 'signup' : 'login'}`, { email, password })
+            const response = await instance.post(`/${isSignUp ? 'signup' : 'login'}`, { email, password })
 
             setCookie('AuthToken', response.data.token)
             setCookie('UserId', response.data.userId)

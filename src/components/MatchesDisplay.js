@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
+import { instance } from "../axios";
 
 function MatchesDisplay({ matches, setClickedUser }) {
   const [matchedProfiles, setMatchedProfiles] = useState(null);
@@ -11,7 +12,7 @@ function MatchesDisplay({ matches, setClickedUser }) {
 
   const getMatches = async () => {
     try {
-      const response = await axios.get("http://localhost:8000/users", {
+      const response = await instance.get("/users", {
         params: { userIds: JSON.stringify(matchedUserIds) },
       });
       setMatchedProfiles(response.data);

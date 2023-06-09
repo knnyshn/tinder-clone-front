@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react'
-import axios from 'axios'
+import { instance } from '../axios'
 
 function ChatInput({user, clickedUser, getUsersMessages, getClickedUsersMessages}) {
   const [textArea, setTextArea] = useState("")
@@ -15,7 +15,7 @@ function ChatInput({user, clickedUser, getUsersMessages, getClickedUsersMessages
       message: textArea
     }
     try {
-      await axios.post('http://localhost:8000/message', { message })
+      await instance.post('/message', { message })
       getUsersMessages()
       getClickedUsersMessages()
       setTextArea('')
