@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import Chat from "./Chat";
 import ChatInput from "./ChatInput";
-import axios from "axios";
 import { instance } from "../axios";
 
 

@@ -2,7 +2,6 @@ import TinderCard from "react-tinder-card";
 import { useState, useEffect } from "react";
 import { useCookies } from "react-cookie";
 import ChatContainer from "../components/ChatContainer";
-import axios from "axios";
 import { instance } from "../axios";
 
 function Dashboard() {
